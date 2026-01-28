@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Libros extends Model
+class Books extends Model
 {
-    protected $table = 'libros';
+    protected $table = 'books';
     protected $fillable = [
-        'nombre', 'descripcion', 'autor', 
+        'title', 'category', 'author', 'stock', 'cover' 
     ];
 
     public $timestamps = false;

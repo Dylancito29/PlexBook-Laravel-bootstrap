@@ -5,7 +5,7 @@
 
   
   <div class="card-body">
-    <h5 class="card-title">Añadir un libro</h5>
+    <h5 class="card-title">Add new book</h5>
     <form  method="post" action="{{ route('libros.store') }}">
       @csrf
         <div class="form-group" >

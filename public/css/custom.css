@@ -1,0 +1,48 @@
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    cursor: pointer;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.groupCarousel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    flex-shrink: 0; /* Important for seamless infinite scroll */
+    animation: spin 50s infinite linear; 
+}
+.cardCarousel{
+    padding: 1rem;
+    border-radius: .2em;
+    min-width: 18rem; /* Asegura que la tarjeta tenga espacio */
+}
+
+.infinite-carousel {
+    width: 100%;
+    margin: 50px auto;
+    
+    display: flex;
+    overflow: hidden; /* Hide scrollbar for seamless look */
+    gap: 1em;
+}
+
+.infinite-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes spin{
+    from {transform: translateX(0);}
+    to {transform: translateX(-100%);}
+}
