@@ -8,7 +8,8 @@ use Faker\Generator as Faker;
 $factory->define(Book::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence(3),
-        'author' => $faker->name,
+        'description' => $faker->paragraph,
+        
         'isbn' => $faker->isbn13,
         // We pick a random URL from the static list we defined in the Book Model.
         'cover_url' => $faker->randomElement(Book::$covers),

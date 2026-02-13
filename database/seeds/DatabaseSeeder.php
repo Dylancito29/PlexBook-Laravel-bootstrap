@@ -37,14 +37,17 @@ class DatabaseSeeder extends Seeder
         // It's like taking all available labels and spreading them out on a table.
         $categories = Category::all();
 
+        $authors = factory(App\Author::class, 10)->create(); // Create 10 authors
+
         // ANALOGY OF THE PROCESS:
         // A. factory(...)->make(): Creates 20 books in "memory" (imaginary, drafts), NOT in the database yet.
         // B. each(...): Takes each book draft one by one and...
         // C. Sticks a label (category_id) chosen at random from our table ($categories).
         // D. $book->save(): NOW YES, saves the definitive book to the shelf (Database).
         // * This prevents the book from automatically creating its own new category and duplicating data unnecessarily.
-        factory(Book::class, 20)->make()->each(function ($book) use ($categories) {
+        factory(Book::class, 20)->make()->each(function ($book) use ($categories, $authors) {
             $book->category_id = $categories->random()->id;
+            $book->author_id = $authors->random()->id;
             $book->save();
 
         });
@@ -59,8 +62,7 @@ class DatabaseSeeder extends Seeder
     }
 }
 
-        factory(Loan::class, 15)->create();
 
 
-    }
-}
+    
+

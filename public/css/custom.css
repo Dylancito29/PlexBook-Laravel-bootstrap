@@ -15,34 +15,65 @@
     height: 100%;
 }
 
-.groupCarousel{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
-    flex-shrink: 0; /* Important for seamless infinite scroll */
-    animation: spin 50s infinite linear; 
-}
-.cardCarousel{
-    padding: 1rem;
-    border-radius: .2em;
-    min-width: 18rem; /* Asegura que la tarjeta tenga espacio */
-}
-
-.infinite-carousel {
+/* =========================================
+   Nuevo Carousel Fluido
+   ========================================= */
+.carousel-container {
     width: 100%;
-    margin: 50px auto;
-    
+    margin: 40px auto;
+    overflow: hidden;
+    position: relative;
+    /* Efecto de desvanecimiento en los bordes */
+    -webkit-mask-image: linear-gradient(90deg, transparent, #fff 5%, #fff 95%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #fff 5%, #fff 95%, transparent);
+}
+
+.carousel-track {
     display: flex;
-    overflow: hidden; /* Hide scrollbar for seamless look */
-    gap: 1em;
+    /* gap: 1.5rem;  <-- Eliminamos gap para usar margin y asegurar loop perfecto */
+    width: max-content;
+    animation: scroll 40s linear infinite; 
 }
 
-.infinite-carousel::-webkit-scrollbar {
-    display: none;
+.carousel-track:hover {
+    animation-play-state: paused;
 }
 
-@keyframes spin{
-    from {transform: translateX(0);}
-    to {transform: translateX(-100%);}
+.carousel-card {
+    width: 220px;
+    margin-right: 1.5rem; /* Usamos margin para que el ancho total sea divisible exactamente */
+    flex-shrink: 0;
+}
+
+/* Animación: Mueve el track 50% a la izquierda (la mitad, ya que duplicamos contenido) */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+/* =========================================
+   Sidebar Styles
+   ========================================= */
+.hover-bg-light:hover {
+    background-color: #f8f9fa !important;
+    color: #0d6efd !important; /* Bootstrap primary color */
+    transition: all 0.2s ease-in-out;
+}
+
+.active-link {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.offcanvas-body::-webkit-scrollbar {
+  width: 6px;
+}
+.offcanvas-body::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+.offcanvas-body::-webkit-scrollbar-thumb {
+  background: #ccc; 
+  border-radius: 3px;
+}
+.offcanvas-body::-webkit-scrollbar-thumb:hover {
+  background: #aaa; 
 }

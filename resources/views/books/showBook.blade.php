@@ -1,43 +1,78 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="modalShowBook{{ $book->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Book details</h1>
+<div class="modal fade" id="{{ $modalId ?? 'modalShowBook'.$book->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-bottom-0">
+        <h1 class="modal-title fs-4 fw-bold text-primary" id="exampleModalLabel">Book Details</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-
-      <div class="card mb-3" style="max-width: 640px;">
-        <div class="row g-0">
-            <div class="col-md-5">
-            <img src="{{ $book->cover }}" class="img-fluid rounded-start" alt="..." style="object-fit: cover;">
+      <div class="modal-body p-4">
+        
+        <div class="row g-4">
+            <!-- Book Cover Column -->
+            <div class="col-md-5 d-flex justify-content-center align-items-start">
+                <div class="shadow rounded overflow-hidden" style="width: 100%; max-width: 300px;">
+                    <img src="{{ $book->cover_url }}" class="img-fluid w-100" alt="{{ $book->title }}" style="object-fit: cover; aspect-ratio: 2/3;">
+                </div>
             </div>
-            <div class="col-md-7">
-                <div class="card-body p-0 ps-3 pe-3 d-flex flex-column h-100">
-                    <h5 class="card-title m-2">{{ $book->title }}</h5>
-                    <p class="card-text m-1">{{ $book->author }}</p>
-                    <p class="card-text m-1"><small class="text-body-secondary"> {{ $book->category }} </small></p>
-                    <p class="card-text m-1"><small class="text-body-secondary"> Stock: {{ $book->stock }} und. </small></p>
-                    <div class="d-grid gap-2 mt-auto mb-2">
-                        <div class="input-group" >
-                            <input type="number" class="form-control" value="1" min="1" max="{{ $book->stock }}" aria-label="Quantity" >
-                            <button type="button" class="btn btn-info">Add to the cart</button>
 
+            <!-- Details Column -->
+            <div class="col-md-7 d-flex flex-column">
+                <div>
+                    <h2 class="fw-bold mb-1">{{ $book->title }}</h2>
+                    <p class="text-muted fs-5 mb-3">{{ optional($book->author)->name }}</p>
+
+                    <div class="d-flex gap-2 mb-4">
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary px-3 py-2 rounded-pill">
+                            <i class="bi bi-tag-fill me-1"></i> {{ $book->category->name }}
+                        </span>
+                        <span class="badge {{ $book->stock > 0 ? 'bg-success' : 'bg-danger' }} bg-opacity-10 {{ $book->stock > 0 ? 'text-success border-success' : 'text-danger border-danger' }} border px-3 py-2 rounded-pill">
+                            <i class="bi bi-box-seam me-1"></i> Stock: {{ $book->stock }}
+                        </span>
+                    </div>
+                    
+                    @if($book->description)
+                        <div class="mb-4">
+                            <h6 class="fw-bold text-secondary text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px;">Description</h6>
+                            <p class="text-secondary" style="line-height: 1.6; max-height: 150px; overflow-y: auto; padding-right: 10px;">
+                                {{ $book->description }}
+                            </p>
                         </div>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalUpdate{{ $book->id }}">Update book</button>
+                    @else
+                        <div class="mb-4 text-muted fst-italic">
+                            No description available.
+                        </div>
+                    @endif
+                </div>
 
-                        <button type="button" class="btn btn-danger">Delete book</button>
+                <div class="mt-auto">
+                    <!-- Customer Actions -->
+                    <label class="form-label fw-bold small text-muted">Ammount</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control text-center fw-bold" value="1" min="1" max="{{ $book->stock }}" aria-label="Quantity" style="max-width: 80px;">
+                        <button type="button" class="btn btn-primary flex-grow-1 shadow-sm">
+                            <i class="bi bi-cart-plus me-2"></i> Add to Cart
+                        </button>
+                    </div>
+
+                    <!-- Admin Actions (Divider) -->
+                    <hr class="my-3 text-muted">
+                    
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-outline-warning w-50" data-bs-toggle="modal" data-bs-target="#modalUpdate{{ $book->id }}">
+                            <i class="bi bi-pencil-square me-1"></i> Edit
+                        </button>
+                        <button type="button" class="btn btn-outline-danger w-50">
+                            <i class="bi bi-trash me-1"></i> Delete
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        
+
       </div>
-      
     </div>
   </div>
 </div>

@@ -14,14 +14,18 @@
     </div>
     <div class="d-flex col-6 mb-3 gap-2 align-items-center justify-content-end" >
       
-        <div class="input-group w-auto" >
-          <input type="text" class="form-control" placeholder="Search Book" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-          <button class="input-group-text btn btn-outline-primary" id="btnGroupAddon2"><i class="bi bi-search"></i></button>
+    <form action="{{ route('books.catalog') }}" method="GET">
+        <div class="input-group w-auto">
+            <input type="text" name="query" class="form-control" placeholder="Search Book" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+            <button type="submit" class="input-group-text btn btn-outline-primary" id="btnGroupAddon2">
+                <i class="bi bi-search"></i>
+            </button>
         </div>
-        <div>
+    </form>
           <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAddBook" >add new book <i class="bi bi-plus"></i></button>
             @include('books.addModal')
         </div>
+
 
     </div>
 
@@ -46,10 +50,10 @@
         <th scope="row">{{ $book->id }}</th>
   
         
-        <td><img src="{{ $book->cover }}" alt="Book Cover" style="width: 50px; height: auto;"></td>
+        <td><img src="{{ $book->cover_url }}" alt="Book Cover" style="width: 50px; height: auto;"></td>
         <td>{{ $book->title }}</td>
-        <td>{{ $book->category }}</td>
-        <td>{{ $book->author }}</td>
+        <td>{{ $book->category->name }}</td>
+        <td>{{ optional($book->author)->name }}</td>
         <td>{{ $book->stock }}</td>
   
         <td>
@@ -68,6 +72,9 @@
       @endforeach
   </tbody>
   </table>
+  <div class="d-flex justify-content-center">
+    {{ $books->links() }}
+  </div>
   @if (session('success'))
   <div class="alert alert-success" role="alert" >
   {{ session('success') }}
