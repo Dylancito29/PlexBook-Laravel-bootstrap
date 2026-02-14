@@ -2,6 +2,7 @@
 
 use App\Book;
 use App\Http\Controllers\BooksController;
+use App\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,24 @@ Route::get('/Books/update',[BooksController::class,'updateView'])->name('books.u
 
 Route::get('/Books/delete',[BooksController::class,'delete'])->name('books.delete');
 Route::post('/Books/destroy',[BooksController::class,'destroy'])->name('books.destroy');
-Route::get('/Books/cart',[BooksController::class,'cart'])->name('books.cart');
+
+
+
+Route::middleware(['auth'])->group(function () {
+    // Only logged-in users can access these routes
+    Route::get('/Books/cart',[BooksController::class,'cart'])->name('books.cart');
+    Route::get('/Books/add-to-cart/{id}',[BooksController::class, 'addToCart'])->name('books.addToCart');
+    Route::get('/Books/remove-from-cart/{id}', [BooksController::class,'removeFromCart'])->name('books.removeFromCart');
+    Route::post('/Books/process-loan', [BooksController::class, 'processLoan'])->name('books.processLoan');
+    
+    Route::get('/loans/active', [BooksController::class, 'activeLoans'])->name('loans.active');
+    Route::post('/loans/return/{id}', [BooksController::class, 'returnBook'])->name('loans.return');
+});
+
+
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

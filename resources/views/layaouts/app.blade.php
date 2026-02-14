@@ -24,10 +24,10 @@
              {{-- Cart Icon --}}
              <a href="{{ route('books.cart') }}" class="text-white position-relative text-decoration-none">
                 <i class="bi bi-cart3 fs-4"></i>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light" style="font-size: 0.6rem;">
-                    0
-                    <span class="visually-hidden">unread messages</span>
-                </span>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light" style="font-size: 0.6rem;">
+                      {{ session('cart') ? count(session('cart')) : 0 }}
+                      <span class="visually-hidden">unread messages</span>
+                  </span>
              </a>
 
              <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">

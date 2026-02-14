@@ -44,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // RELATIONSHIP: "History of Borrowed Books"
+    // One user can have MANY loans over time.
+    // Usage: $user->loans (Get all loans made by this user).
+    public function loans()
+    {
+        return $this->hasMany(Loan::class);
+    }
 }

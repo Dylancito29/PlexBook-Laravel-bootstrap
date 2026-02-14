@@ -49,12 +49,11 @@
 
                 <div class="mt-auto">
                     <!-- Customer Actions -->
-                    <label class="form-label fw-bold small text-muted">Ammount</label>
-                    <div class="input-group mb-3">
-                        <input type="number" class="form-control text-center fw-bold" value="1" min="1" max="{{ $book->stock }}" aria-label="Quantity" style="max-width: 80px;">
-                        <button type="button" class="btn btn-primary flex-grow-1 shadow-sm">
-                            <i class="bi bi-cart-plus me-2"></i> Add to Cart
-                        </button>
+                    <!-- Updated for Lending Logic: Direct 'Borrow' button, no quantity selector needed for loans -->
+                    <div class="d-grid gap-2 mb-3">
+                        <a href="{{ route('books.addToCart', $book->id) }}" class="btn btn-primary btn-lg shadow-sm">
+                            <i class="bi bi-journal-plus me-2"></i> Prestar Libro
+                        </a>
                     </div>
 
                     <!-- Admin Actions (Divider) -->
