@@ -71,17 +71,24 @@ Use this account to log in as an Administrator:
 
 ## 📸 Screenshots
 
-Login
+## Login
 ![alt text](image.png)
-Admin Dashboard
-![alt text](image-1.png)
-Catalog manager (only for admin)
+
+## Admin Dashboard
+![Grabación de pantalla desde 2026-02-15 21-25-44](https://github.com/user-attachments/assets/efcf68b9-fae0-42a9-91be-84cdf933462d)
+
+## User Dasboard
+![Grabación de pantalla desde 2026-02-15 21-06-34 (1)](https://github.com/user-attachments/assets/100f6c4e-da31-4345-859b-8d9f7a621ffa)
+
+
+
+## Catalog manager (only for admin)
 ![alt text](image-2.png)
-Add new book 
+## Add new book 
 ![alt text](image-3.png)
-Show a book
+## Show a book
 ![alt text](image-4.png)
-Loan manager
+## Loan manager
 ![alt text](image-5.png)
 
 ---
