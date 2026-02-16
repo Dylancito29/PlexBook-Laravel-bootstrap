@@ -4,16 +4,30 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * 📛 The Access Badge (Role Model)
+ * 
+ * This model defines WHO you are in the system (Admin vs. User).
+ * It's like the security badge you wear around your neck.
+ * - Admin: Has the "Master Key" (Can edit, delete, add books).
+ * - User: Has a "Reader Pass" (Can only browse and borrow).
+ */
 class Role extends Model
 {
-    // $table: It's like telling it: "Hey, in the database your house is called 'roles'".
+    /**
+     * 🗃️ The Database Table
+     * 
+     * Explicitly telling Laravel: "Hey, look for the 'roles' table, not 'role's".
+     */
     protected $table = 'roles';
 
-    // $fillable: The "VIP List".
-    // Laravel protects your database against malicious intruders.
-    // Only the fields you write in this array have permission to be mass-assigned
-    // (for example, when you use Role::create([...])).
-    // If you try to send a field that isn't here, Laravel will ignore it for security.
+    /**
+     * 🛡️ The White List ($fillable)
+     * 
+     * The "VIP List" of attributes.
+     * Only the 'Rol_name' (e.g., 'admin', 'user') is allowed to be mass-assigned.
+     * This prevents someone from accidentally (or maliciously) changing critical ID fields.
+     */
     protected $fillable = [
         'Rol_name'
     ];

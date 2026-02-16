@@ -57,6 +57,7 @@
                     </div>
 
                     <!-- Admin Actions (Divider) -->
+                    @if(auth()->check() && auth()->user()->isAdmin())
                     <hr class="my-3 text-muted">
                     
                     <div class="d-flex gap-2">
@@ -67,6 +68,7 @@
                             <i class="bi bi-trash me-1"></i> Delete
                         </button>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -76,4 +78,6 @@
   </div>
 </div>
 
-@include('books.updateModal', ['book' => $book])
+@if(auth()->check() && auth()->user()->isAdmin())
+    @include('books.updateModal', ['book' => $book])
+@endif

@@ -13,9 +13,8 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      * 
-     * ANALOGY: The "White List" or VIP.
-     * Only these details can enter "in a group" into the database.
-     * It's a security measure so no one can change their own role or ID by injecting malicious data.
+     * The "White List": Only these fields can be mass-assigned.
+     * This prevents users from sneaking in unwanted data (like role_id changes).
      *
      * @var array
      */
@@ -26,8 +25,8 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for arrays.
      * 
-     * ANALOGY: The "Safe".
-     * When we transform this user to text (JSON) to send it to an App or API,
+     * The "Safe": Sensitive data that won't be exposed in JSON responses.
+
      * these fields are automatically hidden. We never want to send the password over the internet!
      *
      * @var array

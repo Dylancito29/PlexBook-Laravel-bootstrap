@@ -1,7 +1,14 @@
-@extends('layaouts.app')
+@extends('layouts.app')
+
+{{-- 
+    🎓 DASHBOARD VIEW
+    This is the "Control Center" or Home Page for the application.
+    It displays high-level statistics and quick links for the user.
+--}}
 
 @section('content')
 
+{{-- Custom CSS for this specific view (Hover effects) --}}
 <style>
   .hover-card {
       transition: all 0.3s ease;
@@ -32,17 +39,21 @@
 
 <div class="row mb-5 align-items-center">
     <div class="col-md-8">
+        {{-- Greets the user dynamically by name, or 'Guest' if not logged in --}}
         <h1 class="fw-bold text-dark">Welcome back, {{ auth()->user() ? auth()->user()->name : 'Guest' }}!</h1>
         <p class="text-muted fs-5">Here is what's happening with your library today.</p>
     </div>
     <div class="col-md-4 text-md-end">
+        {{-- Display current date using Carbon library --}}
         <span class="text-muted">{{ now()->format('l, d F Y') }}</span>
     </div>
 </div>
 
-<!-- Stats Row -->
+<!-- Stats Row: Only visible to Logged In Users -->
 @auth
 <div class="row g-4 mb-5">
+    
+    {{-- Card 1: Active Loans Counter --}}
     <div class="col-md-4">
         <div class="card p-3 shadow-sm stat-card h-100">
             <div class="d-flex justify-content-between align-items-center">
@@ -58,6 +69,7 @@
         </div>
     </div>
     
+    {{-- Card 2: Due Soon (Warning) --}}
     <div class="col-md-4">
         <div class="card p-3 shadow-sm stat-card h-100" style="border-left-color: #ffc107;">
             <div class="d-flex justify-content-between align-items-center">
@@ -73,6 +85,7 @@
         </div>
     </div>
     
+    {{-- Card 3: Total Library Inventory --}}
     <div class="col-md-4">
         <div class="card p-3 shadow-sm stat-card h-100" style="border-left-color: #198754;">
             <div class="d-flex justify-content-between align-items-center">
@@ -128,6 +141,7 @@
     </a>
   </div>
 
+  @if(auth()->check() && auth()->user()->isAdmin())
   <div class="col">
     <a href="{{ route('books.add') }}" class="card-link h-100">
       <div class="card shadow-sm h-100 hover-card">
@@ -161,6 +175,7 @@
       </div>
     </a>
   </div>
+  @endif
   
 </div>
 

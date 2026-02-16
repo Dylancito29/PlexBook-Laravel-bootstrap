@@ -27,6 +27,15 @@
                 </div>
             </div>
 
+            <!-- ISBN -->
+            <div class="mb-3">
+                <label for="isbn" class="form-label fw-bold text-secondary">ISBN</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light"><i class="bi bi-upc-scan"></i></span>
+                    <input type="text" id="isbn" class="form-control" value="{{ $book->isbn }}" name="isbn" required>
+                </div>
+            </div>
+
             <div class="row mb-3">
                 <!-- Category -->
                 <div class="col-md-6">

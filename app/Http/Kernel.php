@@ -48,7 +48,10 @@ class Kernel extends HttpKernel
     /**
      * The application's route middleware.
      *
-     * These middleware may be assigned to groups or used individually.
+     * 🏷️ The Nickname List
+     * Here we give short, easy names to our middleware classes.
+     * Instead of typing "App\Http\Middleware\AdminMiddleware::class" every time,
+     * we can just say "admin" in our routes file.
      *
      * @var array
      */
@@ -63,5 +66,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
     ];
 }

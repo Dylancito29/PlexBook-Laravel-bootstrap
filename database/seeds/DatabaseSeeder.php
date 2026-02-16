@@ -17,13 +17,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // 1. MANUAL ROLE CREATION
+        // 1. CREATE ADMIN USER
+        // We ensure the necessary user for accessing the system exists.
+        $this->call(AdminUserSeeder::class);
+
+
+        // 2. MANUAL ROLE CREATION
         // We create specific roles "by hand" because they are fundamental and fixed.
-        Role::Create(['Rol_name' => 'admin']);
-        Role::Create(['Rol_name' => 'user']);
+        // Check if role exists before creating to avoid unique constraint violation if re-running
+        if(\App\Role::where('Rol_name', 'admin')->doesntExist()){
+             \App\Role::create(['Rol_name' => 'admin']);
+        }
+        if(\App\Role::where('Rol_name', 'user')->doesntExist()){
+             \App\Role::create(['Rol_name' => 'user']);
+        }
 
 
-        // 2. USER CREATION (The Population)
+        // 3. USER CREATION (The Population)
         // ANALOGY: We use the "Factory" to clone 10 users.
         // create() is the command that says: "Build them and save them to the database RIGHT NOW".
         factory(User::class, 10)->create();

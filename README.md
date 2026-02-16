@@ -1,52 +1,91 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# PlexBook - Library Management System 📚
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Welcome to **PlexBook**, a robust Library Management System built with Laravel. This application streamlines library operations, allowing administrators to manage books, authors, categories, and loans efficiently.
 
-## About Laravel
+## 🚀 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### for Administrators 👨‍💼
+- **Dashboard**: Real-time overview of active loans, pending returns, and inventory stats.
+- **Book Management**:
+  - **CRUD Operations**: Create, Read, Update, and Delete books with ease.
+  - **Quick Add**: Seamlessly add new Authors and Categories via AJAX modals without leaving the page.
+  - **Inventory Tracking**: Automatic stock adjustments on loan and return.
+- **Loan Management**:
+  - Issue books to users.
+  - Process returns with validation logic (prevents double returns).
+  - Visual indicators for overdue loans.
+- **User Management**: Manage library members and staff roles.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### for Users 👤
+- **Catalog Browsing**: Search for books by title or category.
+- **My Loans**: View history of borrowed books, due dates, and status.
+- **Request Books**: Add books to a personal lending cart for checkout.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🛠 Tech Stack
 
-## Learning Laravel
+- **Framework**: Laravel 7.x
+- **Frontend**: Bootstrap 5, Blade Templates
+- **Database**: MySQL
+- **Scripting**: jQuery (AJAX operations)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ⚙️ Installation Guide
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Follow these steps to set up the project locally:
 
-## Laravel Sponsors
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Dylancito29/libreria-crud--Laravel-bootstrap.git
+   cd libreria-crud--Laravel-bootstrap
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+2. **Install Dependencies**
+   ```bash
+   composer install
+   npm install && npm run dev
+   ```
 
-### Premium Partners
+3. **Environment Setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   *Configure your database settings in the `.env` file.*
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+4. **Database Migration & Seeding**
+   This command sets up the database, roles, and the default Admin user.
+   ```bash
+   php artisan migrate --seed
+   ```
 
-## Contributing
+5. **Run the Server**
+   ```bash
+   php artisan serve
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🔑 Demo Credentials
+
+Use this account to log in as an Administrator:
+
+- **Email**: `dylanyesidflorez@plexbook.com`
+- **Password**: `Dylan123`
+
+## 📸 Screenshots
+
+Login
+![alt text](image.png)
+Admin Dashboard
+![alt text](image-1.png)
+Catalog manager (only for admin)
+![alt text](image-2.png)
+Add new book 
+![alt text](image-3.png)
+Show a book
+![alt text](image-4.png)
+Loan manager
+![alt text](image-5.png)
+
+---
+Made with ❤️ by [Your Name]
 
 ## Code of Conduct
 
