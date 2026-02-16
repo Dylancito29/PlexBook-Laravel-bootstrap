@@ -85,7 +85,7 @@ Loan manager
 ![alt text](image-5.png)
 
 ---
-Made with ❤️ by [Your Name]
+Made with ❤️ by Dylan :) 
 
 ## Code of Conduct
 
